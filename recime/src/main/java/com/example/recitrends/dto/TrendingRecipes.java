@@ -17,14 +17,13 @@ public class TrendingRecipes implements Comparable<TrendingRecipes> {
 		
 
 		@Override
-		public int compareTo(TrendingRecipes o) {
-			// TODO Auto-generated method stub
-			return 0;
+		public int compareTo(TrendingRecipes tr) {
+			return Double.compare(this.trendScore, tr.getTrendScore());
 		}
 		
 		public TrendingRecipes(Recipes r, int highestView, int highestEngagement) {
 			recipe = r;
-			trendScore = TrendCalculations.calculateTrendScore(
+			trendScore = TrendCalculations.calculateTrendScore(r, 
 					highestView, highestEngagement, r.getRecencyFactor());
 		}
 }

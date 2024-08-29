@@ -1,6 +1,6 @@
 package com.example.recitrends.services;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -26,11 +26,21 @@ public class ReciTrendsService {
 	public ReciTrendsService(RecipeRepository rr) {
 		this.rr = rr;
 	}
-
-	public List<TrendingRecipes> getTrendingRecipes() {
-		log.info("Getting ALL Trending Recipes.");
+	
+	private List<Recipes> retrieveRecipesByDifficulty(Difficulty d) {
+		if(d == null) {
+			log.info("Getting ALL Trending Recipes.");
+			return rr.findAll();
+		} else {
+			log.info("Getting Trending Recipes based on Difficulty: {}", d.name());
+			return rr.findByDifficulty(d);
+		}
+	}
+	
+	public List<TrendingRecipes> getTrendingRecipes(Difficulty d) {
 		
-		List<Recipes> allRecipes = rr.findAll();
+		
+		List<Recipes> allRecipes = retrieveRecipesByDifficulty(d);
 		
 		Optional<Recipes> highestView = allRecipes
 				.stream()
@@ -40,6 +50,14 @@ public class ReciTrendsService {
 				.stream()
 				.max(Comparator.comparingInt(Recipes::getEngagementCount));
 		
+		log.info("Recipe: {} has the highest View in list: {}", 
+				highestView.get().getRecipeName(),
+				highestView.get().getViewCount());
+
+		log.info("Recipe: {} has the highest Engagement in list: {}",
+				highestEngagement.get().getRecipeName(),
+				highestEngagement.get().getEngagementCount());
+		
 		List<TrendingRecipes> tr = allRecipes
 				.stream()
 				.map(recipes -> new TrendingRecipes(
@@ -48,20 +66,24 @@ public class ReciTrendsService {
 						highestEngagement.get().getEngagementCount()))
 				.collect(Collectors.toList());
 		
+		/* 
+		 * Sorting based on override compareTo and since the default of compareTo is from 
+		 * Lowest to Highest. We need to reverse in order to get the position. with #1 being the highest
+		*/
+		Collections.sort(tr, Collections.reverseOrder());
+		
+		int counter = 0;
+		
+		
 		for(TrendingRecipes t: tr) {
-			log.info(String.valueOf(t.getTrendScore()));
+			t.setPosition(++counter);
+			
+			log.info("Rank#{} Recipe: {}",
+					t.getPosition(),
+					t.getRecipe().getRecipeName());
 		}
 		
 		
-		return null;
+		return tr;
 	}
-	
-	public List<TrendingRecipes> getTrendingRecipes(Difficulty difficulty) {
-	log.info("Getting Trending Recipes based on difficulty: {}", 
-			difficulty.name());
-		
-		return null;
-	}
-
-
 }

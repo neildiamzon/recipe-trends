@@ -1,25 +1,22 @@
 package com.example.recitrends.controller;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.recitrends.dto.TrendingRecipes;
 import com.example.recitrends.enums.Difficulty;
 import com.example.recitrends.services.ReciTrendsService;
 
-import lombok.extern.slf4j.Slf4j;
-
 @Controller
-@RequestMapping("/api/recipes/trending")
-@Slf4j
+@RequestMapping("/api/recipes/trending/search")
 public class ReciTrendsController {
 	
 	private final ReciTrendsService rts;
@@ -29,16 +26,19 @@ public class ReciTrendsController {
 		this.rts = rts;
 	}
 	
-	@GetMapping("/all")
+	@GetMapping
 	public ResponseEntity<List<TrendingRecipes>> getAllTrendingRecipes(){
-		List<TrendingRecipes> trendingRecipes = rts.getTrendingRecipes();
+		
+		//null meaning retrieve ALL recipes
+		
+		List<TrendingRecipes> trendingRecipes = rts.getTrendingRecipes(null);
 		
 		return new ResponseEntity<>(trendingRecipes, HttpStatus.OK);
 	}
 	
-	@GetMapping("/{diff}")
+	@GetMapping(params = "difficulty")
 	public ResponseEntity<List<TrendingRecipes>> getTrendingRecipesDifficulty(
-			@PathVariable("diff") Difficulty diff){
+			@RequestParam("difficulty") Difficulty diff){
 		List<TrendingRecipes> trendingRecipes = rts.getTrendingRecipes(diff);
 		
 		return new ResponseEntity<>(trendingRecipes, HttpStatus.OK);

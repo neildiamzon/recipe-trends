@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import com.example.recitrends.enums.Difficulty;
 import com.example.recitrends.utils.TrendCalculations;
 
-import jakarta.annotation.PostConstruct;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -20,14 +19,12 @@ import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
 
 @Entity
 @Table(name = "recipes")
 @NoArgsConstructor
 @Getter
 @Setter
-@Slf4j
 public class Recipes {
 	
 	@Id
@@ -67,7 +64,6 @@ public class Recipes {
 	@PostLoad
 	public void setupEngagementCountAndRecencyFactor() {
 		if (engagement != null) {
-			log.info("Setting up Engagement Count");
 			this.engagementCount = engagement.getCommentCount() + 
 					engagement.getLikeCount() + 
 					engagement.getShareCount();
