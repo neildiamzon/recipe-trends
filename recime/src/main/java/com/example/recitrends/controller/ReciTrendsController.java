@@ -14,8 +14,11 @@ import com.example.recitrends.dto.TrendingRecipes;
 import com.example.recitrends.enums.Difficulty;
 import com.example.recitrends.services.ReciTrendsService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/api/recipes/trending")
+@Slf4j
 public class ReciTrendsController {
 	
 	private final ReciTrendsService rts;
@@ -27,7 +30,6 @@ public class ReciTrendsController {
 	
 	@GetMapping("/all")
 	public ResponseEntity<List<TrendingRecipes>> getAllTrendingRecipes(){
-	
 		List<TrendingRecipes> trendingRecipes = rts.getTrendingRecipes();
 		
 		return new ResponseEntity<>(trendingRecipes, HttpStatus.OK);
@@ -36,7 +38,6 @@ public class ReciTrendsController {
 	@GetMapping("/{diff}")
 	public ResponseEntity<List<TrendingRecipes>> getTrendingRecipesDifficulty(
 			@PathVariable("diff") Difficulty diff){
-	
 		List<TrendingRecipes> trendingRecipes = rts.getTrendingRecipes(diff);
 		
 		return new ResponseEntity<>(trendingRecipes, HttpStatus.OK);

@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TrendingRecipes implements Comparable<TrendingRecipes> {
 
-		private Recipe recipe;
+		private Recipes recipe;
 		private Double trendScore;
 		
 
