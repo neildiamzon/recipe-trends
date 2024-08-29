@@ -56,10 +56,10 @@ public class Recipes {
 	private Difficulty difficulty;
 	
 	@Transient
-	private int engagementCount;
+	private int engagementCount = 0;
 	
 	@Transient
-	private double recencyFactor;
+	private double recencyFactor = 0;
 	
 	@PostLoad
 	public void setupEngagementCountAndRecencyFactor() {

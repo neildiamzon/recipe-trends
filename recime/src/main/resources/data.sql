@@ -11,7 +11,8 @@ VALUES
 (8, '2024-01-24', 1500, 160, 120),
 (9, '2023-12-24', 2500, 400, 500),
 (10, '2024-08-25', 10, 5, 2),
-(11, '2024-08-29', 3, 2, 1);
+(11, '2024-08-29', 3, 2, 1),
+(12, null, 0, 0, 0);
 
 INSERT INTO recipes
 (recipe_id, recipe_name, recipe_owner, 
@@ -49,5 +50,8 @@ VALUES
 'https://ddg0cip9uom1w.cloudfront.net/code-challenge/burger.jpg',
 'EASY'),
 (11, 'BAKED POTATO', 'Henry', 10, '2024-08-29', 11, 
+'https://ddg0cip9uom1w.cloudfront.net/code-challenge/burger.jpg',
+'EASY'),
+(12, 'BANANA BREAD', 'Ulysses', 0, '2024-08-29', 12, 
 'https://ddg0cip9uom1w.cloudfront.net/code-challenge/burger.jpg',
 'EASY');

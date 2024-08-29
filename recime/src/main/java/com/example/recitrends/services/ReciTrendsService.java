@@ -38,8 +38,6 @@ public class ReciTrendsService {
 	}
 	
 	public List<TrendingRecipes> getTrendingRecipes(Difficulty d) {
-		
-		
 		List<Recipes> allRecipes = retrieveRecipesByDifficulty(d);
 		
 		Optional<Recipes> highestView = allRecipes

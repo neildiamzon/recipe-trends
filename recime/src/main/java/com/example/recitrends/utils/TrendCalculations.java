@@ -46,7 +46,8 @@ public class TrendCalculations {
 	public static double calculateRecencyFactor(Recipes recipe) { 
 		double v = 0.0;
 		
-		if (recipe.getEngagement() != null) {
+		if (recipe.getEngagement() != null 
+				&& recipe.getEngagement().getLastEngagement() != null) {
 			LocalDate today = LocalDate.now();
 		
 			long deltaTime = ChronoUnit.DAYS.between(
