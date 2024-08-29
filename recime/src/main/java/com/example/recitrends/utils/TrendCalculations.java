@@ -22,25 +22,28 @@ public class TrendCalculations {
 	 * 
 	 * each weight represents their importance for the trend score
 	 * 
-	 * and sum of all weights must be equal to 1.0
+	 * and sum of all weights must be equal to 1.0 (100%) percentage presented as decimal
 	 * 
-	 * in this example view and engagement weights are equal 
-	 * 
-	 * and recencyFactor weight is less important
+	 * the weight is directly proportional to its importance
 	 * 
 	 * 
 	 * */
 	
-	private final static double viewWeight = 0.1;
-	private final static double engagementWeight = 0.1;
-	private final static double recencyFactorWeight = 0.8;
+	private final static double viewWeight = 0.3; // 30% of the trend score
+	private final static double engagementWeight = 0.4; // 40% of the trend score
+	private final static double recencyFactorWeight = 0.3; // 30% of the trend score
 	
 	
-	public static double getLambda() {
+	// Decay Rate
+	public static double getLambda() { 
 		return -Math.log(targetRecencyFactor) / targetDecayPeriod;
 	}
 	
-	public static double calculateRecencyFactor(Recipes recipe) {
+	/*
+	 *  Recency Factor is a measure used to weigh an event based on how recent it occurred
+	 *  
+	 */ 
+	public static double calculateRecencyFactor(Recipes recipe) { 
 		double v = 0.0;
 		
 		if (recipe.getEngagement() != null) {
