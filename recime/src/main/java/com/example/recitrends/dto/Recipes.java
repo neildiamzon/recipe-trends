@@ -3,6 +3,7 @@ package com.example.recitrends.dto;
 import java.time.LocalDate;
 
 import com.example.recitrends.enums.Difficulty;
+import com.example.recitrends.utils.TrendCalculations;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.Column;
@@ -60,13 +61,18 @@ public class Recipes {
 	@Transient
 	private int engagementCount;
 	
+	@Transient
+	private double recencyFactor;
+	
 	@PostLoad
-	public void setupEngagementCount() {
-		log.info("Setting up Engagement Count");
+	public void setupEngagementCountAndRecencyFactor() {
 		if (engagement != null) {
+			log.info("Setting up Engagement Count");
 			this.engagementCount = engagement.getCommentCount() + 
 					engagement.getLikeCount() + 
 					engagement.getShareCount();
+			
+			this.recencyFactor = TrendCalculations.calculateRecencyFactor(this);
 		}
 	}
 }

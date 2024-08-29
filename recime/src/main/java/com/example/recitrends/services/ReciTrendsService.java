@@ -1,6 +1,10 @@
 package com.example.recitrends.services;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,11 +30,28 @@ public class ReciTrendsService {
 	public List<TrendingRecipes> getTrendingRecipes() {
 		log.info("Getting ALL Trending Recipes.");
 		
-		List<Recipes> r = rr.findAll();
+		List<Recipes> allRecipes = rr.findAll();
 		
-		for (Recipes rs: r) {
-			log.info(String.valueOf(rs.getEngagementCount()));
+		Optional<Recipes> highestView = allRecipes
+				.stream()
+				.max(Comparator.comparingInt(Recipes::getViewCount));
+		
+		Optional<Recipes> highestEngagement = allRecipes
+				.stream()
+				.max(Comparator.comparingInt(Recipes::getEngagementCount));
+		
+		List<TrendingRecipes> tr = allRecipes
+				.stream()
+				.map(recipes -> new TrendingRecipes(
+						recipes,
+						highestView.get().getViewCount(),
+						highestEngagement.get().getEngagementCount()))
+				.collect(Collectors.toList());
+		
+		for(TrendingRecipes t: tr) {
+			log.info(String.valueOf(t.getTrendScore()));
 		}
+		
 		
 		return null;
 	}
