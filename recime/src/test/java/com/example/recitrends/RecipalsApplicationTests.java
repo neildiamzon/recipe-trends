@@ -1,4 +1,4 @@
-package com.example.recipals;
+package com.example.recitrends;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

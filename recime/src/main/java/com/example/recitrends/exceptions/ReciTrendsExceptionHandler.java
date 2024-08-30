@@ -12,7 +12,8 @@ import com.example.recitrends.dto.ResponseMessage;
 public class ReciTrendsExceptionHandler {
 	
 	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
-	public ResponseEntity<ResponseMessage> handleMethodArguementTypeMismatchException(MethodArgumentTypeMismatchException e){
+	public ResponseEntity<ResponseMessage> handleMethodArguementTypeMismatchException(
+			MethodArgumentTypeMismatchException e){
 		String message = "A difficulty is required for filtering trending recipes.";
         return new ResponseEntity<>(new ResponseMessage(message), HttpStatus.BAD_REQUEST);
 	}

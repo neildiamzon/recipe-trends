@@ -1,0 +1,55 @@
+{
+	"info": {
+		"_postman_id": "8f0fb6d0-75a2-4bdc-bf98-52845c5ba5b0",
+		"name": "ReciMe Spring Coding Challenge collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13498416"
+	},
+	"item": [
+		{
+			"name": "Test Cases",
+			"item": [
+				{
+					"name": "GET All Trending Recipes",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GET Trending recipes by EASY",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GET Trending recipes by MEDIUM",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GET Trending recipes by HARD",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "GET Trending recipe by invalid difficulty",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
