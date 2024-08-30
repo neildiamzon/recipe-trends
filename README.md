@@ -52,10 +52,7 @@ The trend score is calculated based on these three categories:
 1. **Normalized number of views of the recipe**
 2. **Normalized number of Engagements (sum of all likes, comments, and shares)**
 3. **Recency factor**
-        - For the recency factor we use the Exponential Decay formula = e^(−λ⋅Δt)
-            - Whereas e is the natural logarithm 
-            - λ = lambda is the rate of decay.
-            - delta time is the time passed between current date and date of last engagement 
+   For the recency factor we use the Exponential Decay formula = e^(−λ⋅Δt). Whereas e is the natural logarithm. λ = lambda is the rate of decay. delta time is the time passed between current date and date of last engagement.
 
 All these three are taken into consideration based on their "weights" 
 
