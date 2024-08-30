@@ -14,7 +14,6 @@ public class TrendingRecipes implements Comparable<TrendingRecipes> {
 		private Recipes recipe;
 		private Double trendScore = 0.0;
 		private int position;
-		
 
 		@Override
 		public int compareTo(TrendingRecipes tr) {
