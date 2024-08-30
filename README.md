@@ -45,4 +45,34 @@
 ## POSTMAN
 
 - **POSTMAN COLLECTIONS is included in the root folder (`postman_collection-test_cases`)**
+
+## NOTES
+
+The trend score is calculated based on these three categories:
+    1. **Normalized number of views of the recipe**
+    2. **Normalized number of Engagements (sum of all likes, comments, and shares)**
+    3. **Recency factor**
+        - For the recency factor we use the Exponential Decay formula = e^(−λ⋅Δt)
+            - Whereas e is the natural logarithm 
+            - λ = lambda is the rate of decay.
+            - delta time is the time passed between current date and date of last engagement 
+
+All these three are taken into consideration based on their "weights" 
+
+The weights will determine how each categories will impact the trend score.
+
+formula for trend score
+
+TrendScore = (NormalizedViews*w1) + (NormalizedEngagements*w2) + (RecencyFactor*w3)
+
+Whereas the w1 + w2 + w3 must be equal to = 1.0 (100%) percentage represented as decimal
+
+Example:
+    w1 = 0.3 (30%) 
+    w2 = 0.5 (50%) -- having the highest weight making w2 important than w1 and w3
+    w3 = 0.2 (20%)
+
+    
+
+
   
