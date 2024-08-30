@@ -5,14 +5,15 @@
 ## Table of Contents
 
 - [Features](#features)
-- [How to run](#Run)
+- [How to run](#RunTheApplication)
 - [POSTMAN testing](#Postman)
 - [Additional Notes](#Notes)
 
-## Features
+## Features and Path
 
-- **Recipe Search**: Search all recipes.
-- **Recipe Search by Difficulty**: Search all recipes filtering by Difficulty (EASY, MEDIUM, HARD).
+- **Recipe Search**: Search all recipes. (`localhost:8080/api/recipes/trending/search/all`)
+- **Recipe Search by Difficulty**: Search all recipes filtering by Difficulty (EASY, MEDIUM, HARD) (`localhost:8080/api/recipes/trending/search?difficulty=EASY`).
+
 
 ## Run the Application:
     To run Recime locally, follow these steps:
