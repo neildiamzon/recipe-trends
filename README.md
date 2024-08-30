@@ -1,6 +1,6 @@
 # Recime
 
-**Recime** is a recipe searching demonstration. This project uses a trending algorithm using user engagement metrics, and a recency factor to provide the best recent recipe recommendations.
+**Recime** is a recipe searching demonstration. This project uses a trending algorithm using user engagement metrics, and a recency factor to provide the best recent recipe recommendations. all search results are always sorted based on "position" and position is based on the TrendScore of each recipes.
 
 ## Table of Contents
 
