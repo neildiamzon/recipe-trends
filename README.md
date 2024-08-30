@@ -5,7 +5,7 @@
 ## Table of Contents
 
 - [Features](#features)
-- [How to run](#RunTheApplication)
+- [Run the application](#Run-the-Application)
 - [POSTMAN testing](#Postman)
 - [Additional Notes](#Notes)
 
