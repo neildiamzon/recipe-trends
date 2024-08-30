@@ -34,6 +34,250 @@
 						"method": "GET",
 						"header": [],
 						"url": {
+							"raw": "localhost:8080/api/recipes/trending/search/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"recipes",
+								"trending",
+								"search",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Trending recipes by EASY",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Testing error message\", () => {",
+									"  const responseJson = pm.response.json();",
+									"  pm.expect(responseJson.message).to.not.eql(\"A difficulty is required for filtering trending recipes.\");",
+									"});",
+									"",
+									"pm.test(\"Testing if param=EASY difficulty matches all returned recipes difficulty.\", () => {",
+									"  const responseJson = pm.response.json();",
+									"  for (let i = 0 ; i < responseJson.length; i ++){",
+									"    pm.expect(responseJson[i].recipe.difficulty).to.eql(\"EASY\");",
+									"  }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/recipes/trending/search?difficulty=EASY",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"recipes",
+								"trending",
+								"search"
+							],
+							"query": [
+								{
+									"key": "difficulty",
+									"value": "EASY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Trending recipes by MEDIUM",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Testing error message\", () => {",
+									"  const responseJson = pm.response.json();",
+									"  pm.expect(responseJson.message).to.not.eql(\"A difficulty is required for filtering trending recipes.\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Testing if param=MEDIUM difficulty matches all returned recipes difficulty.\", () => {",
+									"  const responseJson = pm.response.json();",
+									"  for (let i = 0 ; i < responseJson.length; i ++){",
+									"    pm.expect(responseJson[i].recipe.difficulty).to.eql(\"MEDIUM\");",
+									"  }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/recipes/trending/search?difficulty=MEDIUM",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"recipes",
+								"trending",
+								"search"
+							],
+							"query": [
+								{
+									"key": "difficulty",
+									"value": "MEDIUM"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Trending recipes by HARD",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Testing error message\", () => {",
+									"  const responseJson = pm.response.json();",
+									"  pm.expect(responseJson.message).to.not.eql(\"A difficulty is required for filtering trending recipes.\");",
+									"});",
+									"",
+									"pm.test(\"Testing if param=HARD difficulty matches all returned recipes difficulty.\", () => {",
+									"  const responseJson = pm.response.json();",
+									"  for (let i = 0 ; i < responseJson.length; i ++){",
+									"    pm.expect(responseJson[i].recipe.difficulty).to.eql(\"HARD\");",
+									"  }",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/recipes/trending/search?difficulty=HARD",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"recipes",
+								"trending",
+								"search"
+							],
+							"query": [
+								{
+									"key": "difficulty",
+									"value": "HARD"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Trending recipe - invalid difficulty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Testing error message\", () => {",
+									"  const responseJson = pm.response.json();",
+									"  pm.expect(responseJson.message).to.eql(\"A difficulty is required for filtering trending recipes.\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/recipes/trending/search?difficulty=ULTRA_HARD",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"recipes",
+								"trending",
+								"search"
+							],
+							"query": [
+								{
+									"key": "difficulty",
+									"value": "ULTRA_HARD"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Trending recipe - missing difficulty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Testing error message\", () => {",
+									"  const responseJson = pm.response.json();",
+									"  pm.expect(responseJson.message).to.eql(\"A difficulty is required for filtering trending recipes.\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
 							"raw": "localhost:8080/api/recipes/trending/search",
 							"host": [
 								"localhost"
@@ -46,38 +290,6 @@
 								"search"
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "GET Trending recipes by EASY",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "GET Trending recipes by MEDIUM",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "GET Trending recipes by HARD",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
-				},
-				{
-					"name": "GET Trending recipe by invalid difficulty",
-					"request": {
-						"method": "GET",
-						"header": []
 					},
 					"response": []
 				}
