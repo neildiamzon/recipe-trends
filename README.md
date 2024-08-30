@@ -11,8 +11,8 @@
 
 ## Features and Path
 
-- **Recipe Search**: Search all recipes. (`localhost:8080/api/recipes/trending/search/all`)
-- **Recipe Search by Difficulty**: Search all recipes filtering by Difficulty (EASY, MEDIUM, HARD) (`localhost:8080/api/recipes/trending/search?difficulty=EASY`).
+- **Recipe Search**: Search all recipes sorted by position. (`localhost:8080/api/recipes/trending/search/all`)
+- **Recipe Search by Difficulty**: Search all recipes filtering by Difficulty (EASY, MEDIUM, HARD) sorted by position. (`localhost:8080/api/recipes/trending/search?difficulty=EASY`).
 
 
 ## Run the Application:
