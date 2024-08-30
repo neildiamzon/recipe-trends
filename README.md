@@ -60,13 +60,13 @@ The weights will determine how each categories will impact the trend score.
 
 formula for trend score
 
-TrendScore = (NormalizedViews*w1) + (NormalizedEngagements*w2) + (RecencyFactor*w3)
+TrendScore = (NormalizedViews * w1) + (NormalizedEngagements * w2) + (RecencyFactor * w3)
 
 Whereas the w1 + w2 + w3 must be equal to = 1.0 (100%) percentage represented as decimal
 
 Example:
     w1 = 0.3 (30%) 
-    w2 = 0.5 (50%) -- having the highest weight making w2 important than w1 and w3
+    w2 = 0.5 (50%) <-- (having the highest weight making w2 important than w1 and w3)
     w3 = 0.2 (20%)
 
     
