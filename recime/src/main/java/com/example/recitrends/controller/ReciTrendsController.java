@@ -28,19 +28,13 @@ public class ReciTrendsController {
 	@GetMapping("/all")
 	public ResponseEntity<List<TrendingRecipes>> getAllTrendingRecipes(){
 		
-		//null meaning retrieve ALL recipes
+		//null = retrieve ALL recipes
 		
 		List<TrendingRecipes> trendingRecipes = rts.getTrendingRecipes(null);
 		
 		return new ResponseEntity<>(trendingRecipes, HttpStatus.OK);
 	}
 	
-	/*
-	* TODO: You must provide the error message, 
-	* “A difficulty is required for filtering trending recipes” if the request does not contain a difficulty.
-	* 
-	* Exception class
-	*/
 	@GetMapping(params = "difficulty")
 	public ResponseEntity<List<TrendingRecipes>> getTrendingRecipesDifficulty(
 			@RequestParam("difficulty") Difficulty diff){
